@@ -17,20 +17,43 @@ public class MathUtility {
     // 0, xích nhẹ sang trái 1 đơn vị, ko ổn, ko tính đc, -1 sao tính !!
 
 
+    //VIÊT HÀM THEO ĐỆ QUY
+    //5! = 1.2.3.4.5 =  4! . 5 = 5 x 4!
+    // 4! = 4 x 3!
+    // 3! = 3 x 2!
+    // 2! = 2 x 1!
+    // 1! = 1
+    //          RETURN
+    // KẾT LUẬN: N = N X (N - 1)!
+    // RECURSION - GỌI LẠI CHÍNH MÌNH VỚI QUY MÔ NHỎ HƠN - BÚP BÊ NGA
 
     public static long getFactorial(int n) {
 
-                if(n < 0 || n > 20) {
+        if (n < 0 || n > 20) {
             // nems ngoại lệ, kèm câu "chửi" và dừng hàm ngay, ko cso value nào đc trả về!!!
             throw new IllegalArgumentException("n must be between 0 and 20");
         }
-        // biến trung gian để tính phép nhân
-        long result = 1;
-        for(int i = 1; i <= n; i++){
-            result *= i; // thuật toán con heo đất // ốc bu nhồi thịt
-        }
-        return result;
+        if(n == 1 || n == 0)
+                return 1;
+
+        return n * getFactorial(n - 1);
     }
+//    KIỂM THỬ LẠI CODE ĐÃ TỐT ƯU - REGESSION TESTING, TEST LẠI THỬ ĐÃ TỪNG TEST
+
+
+//    public static long getFactorial(int n) {
+//
+//                if(n < 0 || n > 20) {
+//            // nems ngoại lệ, kèm câu "chửi" và dừng hàm ngay, ko cso value nào đc trả về!!!
+//            throw new IllegalArgumentException("n must be between 0 and 20");
+//        }
+//        // biến trung gian để tính phép nhân
+//        long result = 1;
+//        for(int i = 1; i <= n; i++){
+//            result *= i; // thuật toán con heo đất // ốc bu nhồi thịt
+//        }
+//        return result;
+//    }
 }
 
 
